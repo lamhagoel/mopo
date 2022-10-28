@@ -13,7 +13,7 @@ from softlearning.samplers import rollouts
 from softlearning.misc.utils import save_video
 
 
-class RLAlgorithm(tf.contrib.checkpoint.Checkpointable):
+class RLAlgorithm(tf.compat.v1.contrib.checkpoint.Checkpointable):
     """Abstract RLAlgorithm.
 
     Implements the _train and _evaluate methods to be used

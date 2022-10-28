@@ -3,6 +3,8 @@ from numbers import Number
 
 import numpy as np
 import tensorflow as tf
+import tf_slim as slim
+import tensorflow_probability as tfp
 from tensorflow.python.training import training_util
 
 from .rl_algorithm import RLAlgorithm
@@ -231,7 +233,7 @@ class SAC(RLAlgorithm):
                 name='{}_{}_optimizer'.format(Q._name, i)
             ) for i, Q in enumerate(self._Qs))
         Q_training_ops = tuple(
-            tf.contrib.layers.optimize_loss(
+            slim.optimize_loss(
                 Q_loss,
                 self.global_step,
                 learning_rate=self._Q_lr,
@@ -284,7 +286,7 @@ class SAC(RLAlgorithm):
         self._alpha = alpha
 
         if self._action_prior == 'normal':
-            policy_prior = tf.contrib.distributions.MultivariateNormalDiag(
+            policy_prior = tfp.distributions.MultivariateNormalDiag(
                 loc=tf.zeros(self._action_shape),
                 scale_diag=tf.ones(self._action_shape))
             policy_prior_log_probs = policy_prior.log_prob(actions)
@@ -311,7 +313,7 @@ class SAC(RLAlgorithm):
         self._policy_optimizer = tf.train.AdamOptimizer(
             learning_rate=self._policy_lr,
             name="policy_optimizer")
-        policy_train_op = tf.contrib.layers.optimize_loss(
+        policy_train_op = slim.optimize_loss(
             policy_loss,
             self.global_step,
             learning_rate=self._policy_lr,

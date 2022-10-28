@@ -2,6 +2,7 @@ from collections import OrderedDict
 
 import numpy as np
 import tensorflow as tf
+import tf_slim as slim
 
 from softlearning.misc.kernel import adaptive_isotropic_gaussian_kernel
 
@@ -242,7 +243,7 @@ class SQL(RLAlgorithm):
                     name='{}_{}_optimizer'.format(Q._name, i)
                 ) for i, Q in enumerate(self._Qs))
             Q_training_ops = tuple(
-                tf.contrib.layers.optimize_loss(
+                slim.optimize_loss(
                     Q_loss,
                     None,
                     learning_rate=self._Q_lr,
