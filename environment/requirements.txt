@@ -34,7 +34,7 @@ glfw==1.7.0
 google-api-python-client==1.7.5
 google-auth==1.6.1
 google-auth-httplib2==0.0.3
-grpcio==1.16.1
+grpcio==1.24.3
 gtimer==1.0.0b5
 gym==0.17.3
 h5py==2.8.0
@@ -75,7 +75,7 @@ PyYAML==5.3.1
 psutil==5.4.8
 ray[rllib,debug]==0.7.1
 redis==3.0.1
-requests==2.21.*
+requests==2.21.1
 rsa==3.4.2
 s3transfer==0.1.13
 scikit-image==0.14.2
