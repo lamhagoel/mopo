@@ -75,7 +75,7 @@ PyYAML==5.3.1
 psutil==5.4.8
 ray[rllib,debug]==0.7.1
 redis==3.0.1
-requests==2.21.1
+requests==2.21.0
 rsa==3.4.2
 s3transfer==0.1.13
 scikit-image==0.14.2
